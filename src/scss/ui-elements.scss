@@ -1,0 +1,14 @@
+.button-primary {
+  background: transparent;
+  border: 3px solid #ffffff;
+  font-size: 20px;
+  color: #ffffff;
+  padding: 7px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s linear;
+
+  &:hover {
+    background: #ffffff33;
+  }
+}
