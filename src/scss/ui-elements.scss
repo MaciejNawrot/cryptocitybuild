@@ -12,3 +12,16 @@
     background: #ffffff33;
   }
 }
+
+.responsive-container {
+  background: #231d5c;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+
+  @media screen and (min-width: 1980px) {
+    padding: 10%;
+  }
+}

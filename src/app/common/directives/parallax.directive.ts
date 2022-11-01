@@ -4,11 +4,16 @@ import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/
   selector: '[appParallax]'
 })
 export class ParallaxDirective {
-  @Input('factor') set parallaxFactor(val: number) {
-    this.factor = val ? val : 1;
+  @Input('ySpeed') set parallaSpeedY(val: number) {
+    this.ySpeed = val ? val : 0;
   }
 
-  private factor: number = 1;
+  @Input('xSpeed') set parallaSpeedX(val: number) {
+    this.xSpeed = val ? val : 0;
+  }
+
+  private ySpeed: number = 0;
+  private xSpeed: number = 0;
 
   constructor(
     private elementRef: ElementRef,
@@ -17,13 +22,18 @@ export class ParallaxDirective {
 
   @HostListener('window:scroll')
   onWindowScroll() {
+    const { x, y } = this.getTranslation();
+
     this.renderer.setProperty(
       this.elementRef.nativeElement,
       'style',
-      `transform: translateY(${this.getTranslation()}px)`);
+      `transform: translate(${x}px, ${y}px)`);
   }
 
-  private getTranslation() {
-    return window.scrollY * this.factor / 10;
+  private getTranslation(): { x: number; y: number } {
+    return {
+      x: window.scrollY * this.xSpeed / 10,
+      y: window.scrollY * this.ySpeed / 10
+    }
   }
 }
