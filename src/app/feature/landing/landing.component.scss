@@ -161,10 +161,11 @@ $breakpoint-fullhd: 1980px;
 
   .comet {
     position: absolute;
-    z-index: 4;
+    filter: brightness(50%);
+    z-index: 2;
     background-size: contain;
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
   }
 
   .comet-right-1 {
